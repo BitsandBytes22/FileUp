@@ -16,8 +16,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
-//port java.io.filNals;
-
+import javax.swing.filechooser.FileFilter;
+import filetools2.MASS_RENAMING_WINDOW;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -25,7 +27,8 @@ import java.text.SimpleDateFormat;
  */
 public class MassRenamingWindow extends javax.swing.JFrame {
     
-    String folderpath;
+    Path parentPath;
+    Path childPath;
     int size;
     String[] pathArray;
     String[] rowName;
@@ -33,8 +36,10 @@ public class MassRenamingWindow extends javax.swing.JFrame {
     String[] rowModifiedDate;
     String[] rowType;
     String[] coloumnNames={"Name","Modified Date","Type","Size"};
+    public static File[] ChosenFiles;
+    public static String folderPath;
+   
     
-    Object [][] data;
     
     SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
@@ -56,11 +61,12 @@ public class MassRenamingWindow extends javax.swing.JFrame {
 
         textField1 = new java.awt.TextField();
         textField1 = new java.awt.TextField();
-        File1TextField = new javax.swing.JTextField();
+        txtPath = new javax.swing.JTextField();
         file1BrowseButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         folder1table = new javax.swing.JTable();
         UploadButton = new javax.swing.JButton();
+        BUTTONmass_rename = new javax.swing.JButton();
 
         textField1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         textField1.setText("textField1");
@@ -70,9 +76,9 @@ public class MassRenamingWindow extends javax.swing.JFrame {
         textField1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         textField1.setText("textField1");
 
-        File1TextField.addActionListener(new java.awt.event.ActionListener() {
+        txtPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                File1TextFieldActionPerformed(evt);
+                txtPathActionPerformed(evt);
             }
         });
 
@@ -96,7 +102,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                true, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -108,12 +114,23 @@ public class MassRenamingWindow extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(folder1table);
+        if (folder1table.getColumnModel().getColumnCount() > 0) {
+            folder1table.getColumnModel().getColumn(1).setPreferredWidth(15);
+            folder1table.getColumnModel().getColumn(2).setPreferredWidth(10);
+        }
 
         UploadButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         UploadButton.setText("Upload");
         UploadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UploadButtonActionPerformed(evt);
+            }
+        });
+
+        BUTTONmass_rename.setText("MASS RENAME");
+        BUTTONmass_rename.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BUTTONmass_renameActionPerformed(evt);
             }
         });
 
@@ -125,41 +142,54 @@ public class MassRenamingWindow extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(File1TextField, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(UploadButton)
-                    .addComponent(file1BrowseButton))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(UploadButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                                .addComponent(file1BrowseButton))
+                            .addComponent(jScrollPane2))
+                        .addGap(47, 47, 47))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(BUTTONmass_rename, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(File1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(file1BrowseButton))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(file1BrowseButton)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(UploadButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 17, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(BUTTONmass_rename, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                        .addGap(19, 19, 19))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void File1TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_File1TextFieldActionPerformed
+    private void txtPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPathActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_File1TextFieldActionPerformed
+    }//GEN-LAST:event_txtPathActionPerformed
 
     private void file1BrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file1BrowseButtonActionPerformed
 
@@ -172,94 +202,108 @@ public class MassRenamingWindow extends javax.swing.JFrame {
         chooser.setCurrentDirectory(new java.io.File("."));
         chooser.setDialogTitle("select folder");
         //  chooser.setDialogTitle(choosertitle);
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        chooser.setMultiSelectionEnabled(true);
+        chooser.showOpenDialog(null); 
+        ChosenFiles= chooser.getSelectedFiles();
+        chooser.setAcceptAllFileFilterUsed(true);
+        
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { 
+  //    System.out.println("getCurrentDirectory(): " 
+   //      +  chooser.getCurrentDirectory());
+   //   System.out.println("getSelectedFile() : " 
+  //       +  chooser.getSelectedFile());
+        
+        childPath=Paths.get(chooser.getSelectedFile().getAbsolutePath());
+        parentPath=childPath.getParent();
+        folderPath=String.valueOf(parentPath);
+        txtPath.setText(folderPath);
+        
+        }
+        
+        chooser.addChoosableFileFilter(new FileFilter(){
+            
+            
+            
+            @Override
+            public boolean accept(File file){
+                
+                return file.getName().toUpperCase().equals(".TXT") || file.getName().toUpperCase().equals(".DOC") || file.getName().toUpperCase().equals(".JPG");
+            }
+            
+            @Override
+            public String getDescription(){
+                return ".txt files or .doc files or .jpg files";
+            }
+        });
+        
+        
+        
+    
         //
         // disable the "All files" option.
         //
-        chooser.setAcceptAllFileFilterUsed(false);
+        
         //
-        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            //    System.out.println("getCurrentDirectory(): "
-                //      +  chooser.getCurrentDirectory());
-            //   System.out.println("getSelectedFile() : "
-                //       +  chooser.getSelectedFile());
-            folderpath = chooser.getSelectedFile().getAbsolutePath();
-            File1TextField.setText(folderpath);
+        
 
-        }
-
-        else {
-            System.out.println("No Selection ");
-        }
+        
 
     }//GEN-LAST:event_file1BrowseButtonActionPerformed
 
     private void UploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonActionPerformed
+        
+        
+        
+        //tPath.setText(folderpath);
+        
         try{
-            // Path path = Paths.get(folderpath1);
-            File directory=new File(folderpath);
-            size=directory.list().length;
-            //  long size = Files.list(Paths.get(folderpath1)).count();
-            /* for(int i=0;i<size;i++){
-                String fileArray[i]=
-
-            }*/
-            // File folder1 = new File(folderpath1);
-            File[] listOfFiles = directory.listFiles();
-            int i=0;
-            for (File file : listOfFiles) {
+            
+           
+            for (File file : ChosenFiles) {
 
                 if (file.isFile()) {
                     
-                    data=new Object[size][4];
+                    System.out.println(file.getName());
+      
                     
-                    rowName= new String[size];
-                    rowModifiedDate=new String[size];
-                    rowType=new String[size];
-                    rowSize=new String[size];
+                    String name=file.getName();
+                    String modifiedDate=sdf.format(file.lastModified());
+                    String type=Files.probeContentType(file.toPath());
+                    String sizeKB=Long.toString(file.length());
+                    String[] data={name,modifiedDate,type,sizeKB};
                     
                     pathArray= new String[size];
-                    //System.out.println(file.getName());
+                    
 
                     DefaultTableModel model = (DefaultTableModel)folder1table.getModel();
                     
                 
-                        data[i][0]=file.getName();
-                        System.out.println("name:"+data[i][0]);
-                        data[i][1]=sdf.format(file.lastModified());
-                         System.out.println("data"+data[i][1]);
-                        data[i][2]=Files.probeContentType(file.toPath());
-                         System.out.println("type: "+data[i][2]);
-                        data[i][3]=file.length();
-                         System.out.println("size: "+data[i][3]);
-                        
-                    
-                    
                     for(int j=0;j<size;j++){
-                        pathArray[i]= file.getAbsolutePath() ;
+                        pathArray[j]= file.getAbsolutePath() ;
                     }
                     
-                
-                    
+                //adding a row which contains name,date,type,size of a file
+                model.addRow(data);
                
                 }
-            i=i+1;
-            
-            
-                
+       
+  
             }
-            DefaultTableModel model =new DefaultTableModel(data,coloumnNames);
-        
-            
-            
-            
+           
         }
+        
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"File Not Found");
 
         }
 
     }//GEN-LAST:event_UploadButtonActionPerformed
+
+    private void BUTTONmass_renameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTTONmass_renameActionPerformed
+        MASS_RENAMING_WINDOW w=new MASS_RENAMING_WINDOW();
+        w.setVisible(true);
+    }//GEN-LAST:event_BUTTONmass_renameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,11 +341,12 @@ public class MassRenamingWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField File1TextField;
+    private javax.swing.JButton BUTTONmass_rename;
     private javax.swing.JButton UploadButton;
     private javax.swing.JButton file1BrowseButton;
     private javax.swing.JTable folder1table;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.TextField textField1;
+    private javax.swing.JTextField txtPath;
     // End of variables declaration//GEN-END:variables
 }

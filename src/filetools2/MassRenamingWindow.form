@@ -37,28 +37,45 @@
               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               <Component id="textField1" min="-2" pref="0" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="File1TextField" pref="407" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="UploadButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="file1BrowseButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="UploadButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="txtPath" min="-2" pref="407" max="-2" attributes="0"/>
+                              <EmptySpace pref="52" max="32767" attributes="0"/>
+                              <Component id="file1BrowseButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                      <Component id="BUTTONmass_rename" min="-2" pref="285" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="File1TextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="file1BrowseButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="txtPath" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="file1BrowseButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                       <Component id="textField1" min="-2" pref="0" max="-2" attributes="0"/>
@@ -69,7 +86,9 @@
                       <Component id="UploadButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="333" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="BUTTONmass_rename" pref="31" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -85,9 +104,9 @@
         <Property name="text" type="java.lang.String" value="textField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="File1TextField">
+    <Component class="javax.swing.JTextField" name="txtPath">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="File1TextFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPathActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="file1BrowseButton">
@@ -112,9 +131,9 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
-                <Column editable="false" title="Name" type="java.lang.String"/>
-                <Column editable="true" title="Last Modified Data" type="java.lang.String"/>
-                <Column editable="true" title="Type" type="java.lang.String"/>
+                <Column editable="true" title="Name" type="java.lang.String"/>
+                <Column editable="false" title="Last Modified Data" type="java.lang.String"/>
+                <Column editable="false" title="Type" type="java.lang.String"/>
                 <Column editable="false" title="Size" type="java.lang.String"/>
               </Table>
             </Property>
@@ -125,12 +144,12 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="15" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -158,6 +177,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UploadButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BUTTONmass_rename">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MASS RENAME"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BUTTONmass_renameActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
