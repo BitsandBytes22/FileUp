@@ -56,7 +56,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         folder1table = new javax.swing.JTable();
-        UploadButton = new javax.swing.JButton();
+        UploadButtonB = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         folder2table = new javax.swing.JTable();
         CompareAB = new javax.swing.JButton();
@@ -66,6 +66,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
         clearTable1 = new javax.swing.JButton();
         clearTable2 = new javax.swing.JButton();
         backButton1 = new javax.swing.JButton();
+        UploadButtonA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,11 +122,11 @@ public class FileCompareWindow extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(folder1table);
 
-        UploadButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        UploadButton.setText("Upload");
-        UploadButton.addActionListener(new java.awt.event.ActionListener() {
+        UploadButtonB.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        UploadButtonB.setText("Upload");
+        UploadButtonB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UploadButtonActionPerformed(evt);
+                UploadButtonBActionPerformed(evt);
             }
         });
 
@@ -186,6 +187,14 @@ public class FileCompareWindow extends javax.swing.JFrame {
             }
         });
 
+        UploadButtonA.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        UploadButtonA.setText("Upload");
+        UploadButtonA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadButtonAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,20 +209,22 @@ public class FileCompareWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(File2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(File1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(File2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(File1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(UploadButtonA))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(file1BrowseButton)
                                     .addComponent(File2BrowseButton)
-                                    .addComponent(UploadButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(UploadButtonB, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(clearTable1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -252,7 +263,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(UploadButton)
+                        .addComponent(UploadButtonB)
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -261,9 +272,11 @@ public class FileCompareWindow extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)
-                        .addContainerGap(12, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(UploadButtonA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(clearTable1)
@@ -350,7 +363,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_File2TextFieldActionPerformed
 
-    private void UploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonActionPerformed
+    private void UploadButtonBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonBActionPerformed
         try{
            // Path path = Paths.get(folderpath1);
            File directory1=new File(folderpath1);
@@ -406,7 +419,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
             
         }
         
-    }//GEN-LAST:event_UploadButtonActionPerformed
+    }//GEN-LAST:event_UploadButtonBActionPerformed
 
     private void CompareABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompareABActionPerformed
         FileComparison Compare = new FileComparison();
@@ -450,6 +463,10 @@ public class FileCompareWindow extends javax.swing.JFrame {
         w3.setVisible(true);
     }//GEN-LAST:event_backButton1ActionPerformed
 
+    private void UploadButtonAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UploadButtonAActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -490,7 +507,8 @@ public class FileCompareWindow extends javax.swing.JFrame {
     private javax.swing.JTextField File1TextField;
     private javax.swing.JButton File2BrowseButton;
     private javax.swing.JTextField File2TextField;
-    private javax.swing.JButton UploadButton;
+    private javax.swing.JButton UploadButtonA;
+    private javax.swing.JButton UploadButtonB;
     private javax.swing.JButton backButton1;
     private javax.swing.JButton clearTable1;
     private javax.swing.JButton clearTable2;

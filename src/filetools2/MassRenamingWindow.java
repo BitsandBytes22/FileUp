@@ -21,6 +21,7 @@ import filetools2.MASS_RENAMING_WINDOW;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
 /**
  *
  * @author darshanadask
@@ -67,6 +68,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
         folder1table = new javax.swing.JTable();
         UploadButton = new javax.swing.JButton();
         BUTTONmass_rename = new javax.swing.JButton();
+        no_files = new javax.swing.JLabel();
 
         textField1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         textField1.setText("textField1");
@@ -144,20 +146,18 @@ public class MassRenamingWindow extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(UploadButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                                .addComponent(file1BrowseButton))
-                            .addComponent(jScrollPane2))
-                        .addGap(47, 47, 47))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
                         .addComponent(BUTTONmass_rename, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(109, 109, 109)
+                        .addComponent(no_files, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(UploadButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addComponent(file1BrowseButton))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +180,9 @@ public class MassRenamingWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BUTTONmass_rename, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BUTTONmass_rename, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                            .addComponent(no_files, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(19, 19, 19))))
         );
 
@@ -252,7 +254,8 @@ public class MassRenamingWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_file1BrowseButtonActionPerformed
 
     private void UploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonActionPerformed
-        
+
+        no_files.setText(ChosenFiles.length+" Selected");
         
         
         //tPath.setText(folderpath);
@@ -346,6 +349,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
     private javax.swing.JButton file1BrowseButton;
     private javax.swing.JTable folder1table;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel no_files;
     private java.awt.TextField textField1;
     private javax.swing.JTextField txtPath;
     // End of variables declaration//GEN-END:variables
