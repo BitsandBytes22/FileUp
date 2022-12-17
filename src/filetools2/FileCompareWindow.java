@@ -11,10 +11,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Stream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import filetools2.FileComparison;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -23,11 +27,12 @@ import javax.swing.table.DefaultTableModel;
  * @author darshanadask
  */
 public class FileCompareWindow extends javax.swing.JFrame {
-    String folderpath1;
-    String folderpath2;
-    int size1,size2,size;
-    String[] pathArray;
-    String[] row1,row2;
+    public  String folderpath1;
+    public static String folderpath2;
+    public static int size1,size2,size;
+    public static String[] pathArray;
+    public static String[] row1,row2, row3;
+    public static File  directory1, directory2;
 
     /**
      * Creates new form FileCompareWindow
@@ -35,6 +40,56 @@ public class FileCompareWindow extends javax.swing.JFrame {
     public FileCompareWindow() {
         initComponents();
     }
+    
+     public void UploadTable(){
+         try{
+           // Path path = Paths.get(folderpath1);
+           directory1=new File(folderpath1);
+           size1=directory1.list().length;
+          
+           File[] listOfFiles1 = directory1.listFiles();
+           for (File file : listOfFiles1) {
+               
+               if (file.isFile()) {
+                   row1= new String[size1];
+                   pathArray= new String[size1];
+               //System.out.println(file.getName());
+               
+               DefaultTableModel model = (DefaultTableModel)folder1table.getModel();
+               for(int i=0; i < size1;i++){
+                   row1[i]= file.getName() ;                                                                             
+               }
+               for(int i=0; i < size1;i++){
+                   pathArray[i]= file.getAbsolutePath() ;                                                                             
+               }
+               model.addRow(row1);
+            }            
+           }
+           directory2=new File(folderpath2);
+           size2=directory2.list().length;
+          
+           File[] listOfFiles2 = directory2.listFiles();
+           for (File file : listOfFiles2) {
+               
+               if (file.isFile()) {
+                   row2= new String[size2];
+               System.out.println(file.getName());
+               DefaultTableModel model = (DefaultTableModel)folder2table.getModel();
+               for(int i=0; i < size2;i++){
+                   row2[i]= file.getName() ;                                                                             
+               }
+               model.addRow(row2);
+            }            
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"File Not Found");
+            
+        }
+         
+         
+     }
+   
     
     
     
@@ -56,7 +111,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         folder1table = new javax.swing.JTable();
-        UploadButtonB = new javax.swing.JButton();
+        UploadButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         folder2table = new javax.swing.JTable();
         CompareAB = new javax.swing.JButton();
@@ -66,7 +121,6 @@ public class FileCompareWindow extends javax.swing.JFrame {
         clearTable1 = new javax.swing.JButton();
         clearTable2 = new javax.swing.JButton();
         backButton1 = new javax.swing.JButton();
-        UploadButtonA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,11 +176,11 @@ public class FileCompareWindow extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(folder1table);
 
-        UploadButtonB.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        UploadButtonB.setText("Upload");
-        UploadButtonB.addActionListener(new java.awt.event.ActionListener() {
+        UploadButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        UploadButton.setText("Upload");
+        UploadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UploadButtonBActionPerformed(evt);
+                UploadButtonActionPerformed(evt);
             }
         });
 
@@ -187,14 +241,6 @@ public class FileCompareWindow extends javax.swing.JFrame {
             }
         });
 
-        UploadButtonA.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        UploadButtonA.setText("Upload");
-        UploadButtonA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UploadButtonAActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,22 +255,20 @@ public class FileCompareWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(File2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(File1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(UploadButtonA))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(File2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(File1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(file1BrowseButton)
                                     .addComponent(File2BrowseButton)
-                                    .addComponent(UploadButtonB, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(UploadButton, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(clearTable1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -263,7 +307,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(UploadButtonB)
+                        .addComponent(UploadButton)
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -272,11 +316,9 @@ public class FileCompareWindow extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(UploadButtonA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(clearTable1)
@@ -307,30 +349,21 @@ public class FileCompareWindow extends javax.swing.JFrame {
     chooser.setAcceptAllFileFilterUsed(false);
     //    
     if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-      System.out.println("getCurrentDirectory(): " 
-         +  chooser.getCurrentDirectory());
-      System.out.println("getSelectedFile() : " 
-         +  chooser.getSelectedFile());
+    
       folderpath2 = chooser.getSelectedFile().getAbsolutePath();
       File2TextField.setText(folderpath2);            
       }   
-    else {
-      System.out.println("No Selection ");
-      }
+    
     
     }//GEN-LAST:event_File2BrowseButtonActionPerformed
 
     private void file1BrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file1BrowseButtonActionPerformed
 
         JFileChooser chooser = new JFileChooser();
-       //  String choosertitle="hi";
-      /*  chooser.showOpenDialog(null);
-        Folder f1 = chooser.getSelectedFile();
-        String filename1 = f1.getAbsolutePath();
-        File1TextField.setText(filename1);*/
+       
       chooser.setCurrentDirectory(new java.io.File("."));
       chooser.setDialogTitle("select folder");
-    //  chooser.setDialogTitle(choosertitle);
+
     chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     //
     // disable the "All files" option.
@@ -338,10 +371,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
     chooser.setAcceptAllFileFilterUsed(false);
     //    
     if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-  //    System.out.println("getCurrentDirectory(): " 
-   //      +  chooser.getCurrentDirectory());
-   //   System.out.println("getSelectedFile() : " 
-  //       +  chooser.getSelectedFile());
+ 
       folderpath1 = chooser.getSelectedFile().getAbsolutePath();
       File1TextField.setText(folderpath1);
       
@@ -350,7 +380,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
       }
     
     else {
-      System.out.println("No Selection ");
+    //  System.out.println("No Selection ");
       }
     
     }//GEN-LAST:event_file1BrowseButtonActionPerformed
@@ -363,71 +393,19 @@ public class FileCompareWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_File2TextFieldActionPerformed
 
-    private void UploadButtonBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonBActionPerformed
-        try{
-           // Path path = Paths.get(folderpath1);
-           File directory1=new File(folderpath1);
-           size1=directory1.list().length;
-          //  long size = Files.list(Paths.get(folderpath1)).count();
-           /* for(int i=0;i<size;i++){
-                String fileArray[i]= 
-                
-            }*/
-          // File folder1 = new File(folderpath1);
-           File[] listOfFiles1 = directory1.listFiles();
-           for (File file : listOfFiles1) {
-               
-               if (file.isFile()) {
-                   row1= new String[size1];
-                   pathArray= new String[size1];
-               //System.out.println(file.getName());
-               
-               DefaultTableModel model = (DefaultTableModel)folder1table.getModel();
-               for(int i=0; i < size1;i++){
-                   row1[i]= file.getName() ;                                                                             
-               }
-               for(int i=0; i < size1;i++){
-                   pathArray[i]= file.getAbsolutePath() ;                                                                             
-               }
-               model.addRow(row1);
-            }            
-           }
-           File directory2=new File(folderpath2);
-           size2=directory2.list().length;
-          //  long size = Files.list(Paths.get(folderpath1)).count();
-           /* for(int i=0;i<size;i++){
-                String fileArray[i]= 
-                
-            }*/
-           //File folder2 = new File(folderpath2);
-           File[] listOfFiles2 = directory2.listFiles();
-           for (File file : listOfFiles2) {
-               
-               if (file.isFile()) {
-                   row2= new String[size2];
-               System.out.println(file.getName());
-               DefaultTableModel model = (DefaultTableModel)folder2table.getModel();
-               for(int i=0; i < size2;i++){
-                   row2[i]= file.getName() ;                                                                             
-               }
-               model.addRow(row2);
-            }            
-           }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"File Not Found");
-            
-        }
+    private void UploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonActionPerformed
+       UploadTable();
+      
         
-    }//GEN-LAST:event_UploadButtonBActionPerformed
+    }//GEN-LAST:event_UploadButtonActionPerformed
 
     private void CompareABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompareABActionPerformed
-        FileComparison Compare = new FileComparison();
-        System.out.println(size1);
-        System.out.println(size2);
-        size= size1>size2 ? size1 : size2;
-        System.out.println(size);
-        int val = Compare.fileCompare(folderpath1, folderpath2,size);
+        dispose();
+       // FileComparison Compare = new FileComparison();
+      
+      
+        int val = filetools2.FileComparison.fileCompare(directory1, directory2);
+        
         //int val=Compare.flag;
         
         if(val==0){
@@ -436,11 +414,18 @@ public class FileCompareWindow extends javax.swing.JFrame {
         }
         else{
             //Compare.equalFiles;
-            FileEqualWindow w = new FileEqualWindow();
-            w.setVisible(true);
+            FileEqualWindow w;
+            try {
+                w = new FileEqualWindow();
+                w.setVisible(true);
            
+            } catch (IOException ex) {
+                Logger.getLogger(FileCompareWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
                
         }
+        
     }//GEN-LAST:event_CompareABActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -461,15 +446,13 @@ public class FileCompareWindow extends javax.swing.JFrame {
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
         HomeWindow w3 = new HomeWindow();
         w3.setVisible(true);
+        dispose();
     }//GEN-LAST:event_backButton1ActionPerformed
-
-    private void UploadButtonAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadButtonAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UploadButtonAActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -493,6 +476,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FileCompareWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -507,8 +491,7 @@ public class FileCompareWindow extends javax.swing.JFrame {
     private javax.swing.JTextField File1TextField;
     private javax.swing.JButton File2BrowseButton;
     private javax.swing.JTextField File2TextField;
-    private javax.swing.JButton UploadButtonA;
-    private javax.swing.JButton UploadButtonB;
+    private javax.swing.JButton UploadButton;
     private javax.swing.JButton backButton1;
     private javax.swing.JButton clearTable1;
     private javax.swing.JButton clearTable2;

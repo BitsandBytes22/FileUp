@@ -14,75 +14,69 @@ import java.text.SimpleDateFormat;
  */
 public class FileComparison {
     
-      String[] equalFiles1;
-      String[] equalFiles2;
-      int flag;
-      public int fileCompare(String path1, String path2,int size){
-          int i,j,k=0;
-          flag=0;
-          equalFiles1 = new String[size];
-          equalFiles2 = new String[size];
-      File file1 = new File(path1);
-      File file2 = new File(path2);
-      File[] array_file1=file1.listFiles();
-      File[] array_file2=file2.listFiles();
-    //FileCompareWindow w= new FileCompareWindow(); 
-     
-      for(i=0;i<array_file1.length;i++){
-          String n1=array_file1[i].getName();
-       for(j=0;j<array_file2.length;j++){
-             System.out.println(flag);
-       
-             String n2=array_file2[j].getName();
+       public static File[] equalFiles1;
+    public static File[] equalFiles2;
+    public static File[] lastModifiedFilesB;
+    public static File[] firstModifiedFilesA;
+    public static int flag;
+    public static File[] array_file1;
+    public static File[] array_file2;
 
-         
-
-    //  DateFormat sdf
-      //      = new SimpleDateFormat("MM-dd-yyyy hh:mm a");
-     // String n1= w.row1[i];
-     // String n2= w.row2[j];
-      System.out.println(n1+n2);
-      if (n1.equals(n2)) {
-          flag++;
-            equalFiles1[k]= n1;
-            equalFiles2[k] = n2;
-            k++;
-            
+    public static int fileCompare(File file1, File file2){
+        int i,j,k=0,p=0;
+        flag=0;
+           
+        array_file1=file1.listFiles();    
+        array_file2=file2.listFiles();
+        int size1 = array_file1.length>array_file2.length ? array_file1.length:array_file2.length;     
+        equalFiles1 = new File[size1];
+        equalFiles2 = new File[size1];
         
-        System.out.println("Both the  are  equal");
-       /* long time1 = array_file1[i].lastModified();
-        System.out.print(sdf.format(time1));
-        long time2 = array_file2[i].lastModified();
-        System.out.print(sdf.format(time2));
-        String t1 = String.valueOf(time1);	
-        String t2 = String.valueOf(time2);	
-         if (t1.compareTo(t2) == 0){
-            System.out.println("equal");
-            
-            
-        }
-        else{
-            System.out.println("not equal");
-            
-            
-        }*/
-      } 
-     // else if(array_file1[i].getName()!=array_file2[i].getName()){
-     //    System.out.println("Both the folders not equal");
-         
-      //}
-      
+        lastModifiedFilesB = new File[size1];
+        firstModifiedFilesA = new File[size1];
+   
+      for(i=0;i<array_file1.length;i++){
+        String n1=array_file1[i].getName();
+        for(j=0;j<array_file2.length;j++){
+            String n2=array_file2[j].getName();
+        DateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm a");
 
-      
-  
-       }
-}
-     // if(flag==0){
-      //    System.out.println("Both the folders not equal");
-          
-     // }
+
+            if (n1.equals(n2)) {
+                flag++;
+                equalFiles1[k]= array_file1[i] ;
+                equalFiles2[k] = array_file2[j];
+                
+                
+                long time1 = array_file1[i].lastModified();
+                System.out.print(sdf.format(time1));
+                long time2 = array_file2[j].lastModified();
+                System.out.print(sdf.format(time2));
+               // String t1 = String.valueOf(time1);	
+               // String t2 = String.valueOf(time2);	
+                if (time1<time2){
+                       firstModifiedFilesA [p]= array_file1[i];
+                     lastModifiedFilesB[p]= array_file2[j];
+                     System.out.println("The file A is not last modified");
+                     p++;
+                }
+                else{
+                    System.out.println("not equal");
+                }
+
+                k++;
+            } 
+        }
+      }
+ 
+      //System.out.println("the array is");
+     // for(File file: lastModifiedFilesB){
+       //   System.out.println("kakakakaka"+file);
+      //}
+     
       return flag;
+  }
 }
     
     
-}
+
