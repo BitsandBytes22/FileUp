@@ -39,6 +39,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
     String[] coloumnNames={"Name","Modified Date","Type","Size"};
     public static File[] ChosenFiles;
     public static String folderPath;
+    HomeWindow back=new HomeWindow();
    
     
     
@@ -60,7 +61,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textField1 = new java.awt.TextField();
+        textField2 = new java.awt.TextField();
         textField1 = new java.awt.TextField();
         txtPath = new javax.swing.JTextField();
         file1BrowseButton = new javax.swing.JButton();
@@ -69,9 +70,10 @@ public class MassRenamingWindow extends javax.swing.JFrame {
         UploadButton = new javax.swing.JButton();
         BUTTONmass_rename = new javax.swing.JButton();
         no_files = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
-        textField1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        textField1.setText("textField1");
+        textField2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        textField2.setText("textField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +138,13 @@ public class MassRenamingWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("CANCEL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,13 +167,19 @@ public class MassRenamingWindow extends javax.swing.JFrame {
                         .addComponent(file1BrowseButton))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(47, 47, 47))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(24, 24, 24)
                         .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -308,6 +323,10 @@ public class MassRenamingWindow extends javax.swing.JFrame {
         w.setVisible(true);
     }//GEN-LAST:event_BUTTONmass_renameActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -348,9 +367,11 @@ public class MassRenamingWindow extends javax.swing.JFrame {
     private javax.swing.JButton UploadButton;
     private javax.swing.JButton file1BrowseButton;
     private javax.swing.JTable folder1table;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel no_files;
     private java.awt.TextField textField1;
+    private java.awt.TextField textField2;
     private javax.swing.JTextField txtPath;
     // End of variables declaration//GEN-END:variables
 }

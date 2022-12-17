@@ -29,6 +29,7 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         newname_TextField = new javax.swing.JTextField();
         enterString = new javax.swing.JLabel();
         LABELatTheRate = new javax.swing.JLabel();
@@ -45,6 +46,8 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
         dollarDEC = new javax.swing.JRadioButton();
         BUTTONcancel = new javax.swing.JButton();
         BUTTONrename = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -358,6 +361,7 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
     private javax.swing.JRadioButton hashINC;
     private javax.swing.JLabel hashLABEL;
     private javax.swing.JTextField hashTEXTFIELD;
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField newname_TextField;
     // End of variables declaration//GEN-END:variables
 }

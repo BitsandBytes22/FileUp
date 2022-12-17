@@ -4,29 +4,21 @@
  */
 package filetools2;
 
-import java.awt.List;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.stream.Stream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
 import javax.swing.filechooser.FileFilter;
-import filetools2.MASS_RENAMING_WINDOW;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.FileInputStream;
 
-import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.mp3.Mp3Parser;
 import org.apache.tika.sax.BodyContentHandler;
 
 
@@ -216,22 +208,34 @@ public class metadataHomePage extends javax.swing.JFrame {
             for (File file : ChosenFiles) {
                 
                 
-                Parser parser = new AutoDetectParser();
+                Parser parser = new Mp3Parser();
                 BodyContentHandler handler = new BodyContentHandler();
                 Metadata metadata = new Metadata();
                 FileInputStream inputstream = new FileInputStream(file);
                 ParseContext context = new ParseContext();
                 
                 parser.parse(inputstream, handler, metadata, context);
-                System.out.println(handler.toString());
+                //System.out.println(handler.toString());
                 
                 String[] metadataNames = metadata.names();
+                
+                for(String name : metadataNames) {		        
+                    System.out.println(name);
+                }
+                
+                /*for(String name : metadataNames) {		        
+                    System.out.println(name + ": " + metadata.get(name));
+                }*/
+                
+                metadata.set("xmpDM:genre","POP");
                 
                 for(String name : metadataNames) {		        
                     System.out.println(name + ": " + metadata.get(name));
                 }
                 
-                metadata.set(Metadata.ARTIST, new Date());
+                parser.parse(inputstream, handler, metadata, context);
+                
+                inputstream.close();
                 
 
                 if (file.isFile()) {
