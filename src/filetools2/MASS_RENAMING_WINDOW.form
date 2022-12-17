@@ -44,7 +44,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="newname_TextField" min="-2" pref="367" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="BUTTONrename" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -59,8 +59,8 @@
                               <Component id="hashINC" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="hashDEC" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="dollarLABEL" min="-2" pref="9" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="dollarLABEL" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="dollarTEXTFIELD" min="-2" pref="56" max="-2" attributes="0"/>
                           </Group>
@@ -128,7 +128,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="dollarLABEL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="$"/>
+        <Property name="text" type="java.lang.String" value="&amp;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="atrTEXTFIELD">

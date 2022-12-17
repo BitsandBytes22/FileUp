@@ -54,7 +54,7 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
 
         hashLABEL.setText("#");
 
-        dollarLABEL.setText("$");
+        dollarLABEL.setText("&");
 
         hashTEXTFIELD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +146,7 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newname_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(BUTTONrename, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
@@ -160,8 +160,8 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
                                 .addComponent(hashINC)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hashDEC)
-                                .addGap(27, 27, 27)
-                                .addComponent(dollarLABEL, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(dollarLABEL)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dollarTEXTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -281,9 +281,9 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
                     
                 }
                 
-                if (rename.charAt(i)=='$'){
+                if (rename.charAt(i)=='&'){
                     
-                    newname=newname.replaceAll("$", String.valueOf(c));
+                    newname=newname.replaceAll("&", String.valueOf(c));
                     
                     if (dollarINC.isSelected()){
                         c=c+1;
@@ -303,8 +303,9 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
     }//GEN-LAST:event_BUTTONrenameActionPerformed
 
     private void BUTTONcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTTONcancelActionPerformed
-        MassRenamingWindow backWindow=new MassRenamingWindow();
-        backWindow.setVisible(true);
+        //MassRenamingWindow backWindow=new MassRenamingWindow();
+        //backWindow.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BUTTONcancelActionPerformed
 
     /**
