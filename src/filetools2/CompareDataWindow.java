@@ -55,7 +55,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
         CompareClear = new javax.swing.JButton();
         CompareUpload = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        CompareClear1 = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,10 +113,10 @@ public class CompareDataWindow extends javax.swing.JFrame {
             }
         });
 
-        CompareClear1.setText("DELETE REDUNDANT FILES");
-        CompareClear1.addActionListener(new java.awt.event.ActionListener() {
+        Delete.setText("DELETE REDUNDANT FILES");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CompareClear1ActionPerformed(evt);
+                DeleteActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
                 .addContainerGap(108, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CompareClear1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CompareClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -161,7 +161,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CompareClear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CompareClear1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -241,7 +241,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void CompareClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompareClear1ActionPerformed
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
 
         try{
         for (int i=0;i<listOfFiles.length;i++) {
@@ -299,7 +299,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
         catch(Exception e){
             
         }
-    }//GEN-LAST:event_CompareClear1ActionPerformed
+    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,9 +339,9 @@ public class CompareDataWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ComapareBrowse;
     private javax.swing.JButton CompareClear;
-    private javax.swing.JButton CompareClear1;
     private javax.swing.JTextField ComparePathField;
     private javax.swing.JButton CompareUpload;
+    private javax.swing.JButton Delete;
     private javax.swing.JTable folder1table;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -444,8 +444,8 @@ public class FileCompareWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_clearTable2ActionPerformed
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
-        HomeWindow w3 = new HomeWindow();
-        w3.setVisible(true);
+//        HomeWindow w3 = new HomeWindow();
+    //    w3.setVisible(true);
         dispose();
     }//GEN-LAST:event_backButton1ActionPerformed
 

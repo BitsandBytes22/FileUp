@@ -27,7 +27,7 @@
               <EmptySpace pref="108" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="CompareClear1" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="Delete" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="CompareClear" min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
@@ -68,7 +68,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CompareClear" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="CompareClear1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="Delete" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
@@ -134,12 +134,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="CompareClear1">
+    <Component class="javax.swing.JButton" name="Delete">
       <Properties>
         <Property name="text" type="java.lang.String" value="DELETE REDUNDANT FILES"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CompareClear1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
