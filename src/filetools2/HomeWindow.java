@@ -7,6 +7,7 @@ package filetools2;
 /**
  *
  * @author darshanadask
+ * This window provides the option to choose the function needed.
  */
 public class HomeWindow extends javax.swing.JFrame {
 
@@ -42,7 +43,6 @@ public class HomeWindow extends javax.swing.JFrame {
         MassRenamingButton = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -81,6 +81,7 @@ public class HomeWindow extends javax.swing.JFrame {
         popupMenu1.setLabel("popupMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(686, 532));
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButton1.setText("Sign out");
@@ -134,9 +135,6 @@ public class HomeWindow extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabel1.setText("FileUP!");
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 20)); // NOI18N
-        jLabel2.setText("Menu");
-
         jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
         jButton7.setText("Metadata Editing");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +152,7 @@ public class HomeWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(41, 41, 41)
                         .addComponent(jButton2)
@@ -169,8 +167,7 @@ public class HomeWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -181,9 +178,7 @@ public class HomeWindow extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jLabel1))
-                .addGap(41, 41, 41)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(85, 85, 85)
                 .addComponent(MassRenamingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(FileComparisonButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,7 +188,7 @@ public class HomeWindow extends javax.swing.JFrame {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
@@ -294,7 +289,6 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables
 }

@@ -248,7 +248,7 @@ public class MASS_RENAMING_WINDOW extends javax.swing.JFrame {
             
             newname=rename;
             
-            for (int i=0;i<rename.length();i++){
+            for (int i=0;i<rename.length();i++){//replacing the special characters by numbers which are incremented or decremented
                 
                 if (Character.isAlphabetic(rename.charAt(i))){
                     continue;

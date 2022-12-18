@@ -12,6 +12,9 @@ import java.text.SimpleDateFormat;
  *
  * @author darshanadask
  */
+/**This is the method to compare files from two folders.
+ * First the name of the file is compared. The equal files are compared on the basis of Date modified. 
+ */
 public class FileComparison {
     
        public static File[] equalFiles1;

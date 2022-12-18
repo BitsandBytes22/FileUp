@@ -90,30 +90,30 @@ public class CompareDataWindow extends javax.swing.JFrame {
             }
         });
 
-        ComapareBrowse.setText("BROWSE");
+        ComapareBrowse.setText("Browse");
         ComapareBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComapareBrowseActionPerformed(evt);
             }
         });
 
-        CompareClear.setText("CLEAR TABLE");
+        CompareClear.setText("Clear Table");
 
-        CompareUpload.setText("UPLOAD");
+        CompareUpload.setText("Upload");
         CompareUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CompareUploadActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Back");
+        jButton1.setText("< BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        Delete.setText("DELETE REDUNDANT FILES");
+        Delete.setText("Delete Reduntant Files");
         Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteActionPerformed(evt);
@@ -124,33 +124,34 @@ public class CompareDataWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CompareClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ComparePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CompareUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComapareBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CompareClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ComparePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CompareUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ComapareBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComparePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComapareBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,7 +163,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CompareClear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,7 +175,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
 
     private void ComapareBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComapareBrowseActionPerformed
 
-      JFileChooser chooser = new JFileChooser();
+      JFileChooser chooser = new JFileChooser();// adding the actions for browse button
       chooser.setCurrentDirectory(new java.io.File("."));
       chooser.setDialogTitle("select folder");
       
@@ -201,7 +202,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
 
         try{
            // Path path = Paths.get(folderpath1);
-           File directory=new File(folderPath);
+           File directory=new File(folderPath); //uploading the details of the file eg:file name,size,type
            size=directory.list().length;
           //  long size = Files.list(Paths.get(folderpath1)).count();
            /* for(int i=0;i<size;i++){
@@ -222,7 +223,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
                    
                    DefaultTableModel model = (DefaultTableModel)folder1table.getModel();
                    
-                   model.addRow(data);
+                   model.addRow(data);//adding the row with details of file
                    
                    
                }
@@ -230,7 +231,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
                    
                    
                }
-        catch(Exception e){
+        catch(Exception e){//catching the exception
             
         }
        
@@ -244,7 +245,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
 
         try{
-        for (int i=0;i<listOfFiles.length;i++) {
+        for (int i=0;i<listOfFiles.length;i++) {//file comparing using readLine() method
             
             for(int j=i+1;j<listOfFiles.length;j++){
                 
@@ -282,7 +283,7 @@ public class CompareDataWindow extends javax.swing.JFrame {
                 
            }
             
-        if(areEqual){
+        if(areEqual){//deleting files on exiting
         
             File f1 = new File(listOfFiles[i].getAbsolutePath());
             f1.deleteOnExit();

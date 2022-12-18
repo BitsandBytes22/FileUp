@@ -24,7 +24,7 @@ import java.nio.file.Paths;
 
 /**
  *
- * @author darshanadask
+ * @author Sneha
  */
 public class MassRenamingWindow extends javax.swing.JFrame {
     
@@ -138,7 +138,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("BACK");
+        jButton1.setText("< BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -210,7 +210,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
 
     private void file1BrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file1BrowseButtonActionPerformed
 
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(); //Browse button functioning
         //  String choosertitle="hi";
         /*  chooser.showOpenDialog(null);
         Folder f1 = chooser.getSelectedFile();
@@ -286,7 +286,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
       
                     
                     String name=file.getName();
-                    String modifiedDate=sdf.format(file.lastModified());
+                    String modifiedDate=sdf.format(file.lastModified()); //addiing details of a file as row
                     String type=Files.probeContentType(file.toPath());
                     String sizeKB=Long.toString(file.length());
                     String[] data={name,modifiedDate,type,sizeKB};
@@ -294,7 +294,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
                     pathArray= new String[size];
                     
 
-                    DefaultTableModel model = (DefaultTableModel)folder1table.getModel();
+                    DefaultTableModel model = (DefaultTableModel)folder1table.getModel(); //setting default table model
                     
                 
                     for(int j=0;j<size;j++){
@@ -302,7 +302,7 @@ public class MassRenamingWindow extends javax.swing.JFrame {
                     }
                     
                 //adding a row which contains name,date,type,size of a file
-                model.addRow(data);
+                model.addRow(data); //adding rows
                
                 }
        
